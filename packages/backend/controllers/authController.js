@@ -14,6 +14,7 @@ const loginTeacher = async (req, res) => {
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
         signed: true,
+        sameSite: 'strict',
         expires: new Date(Date.now() + 2592000000), // 30 days
       })
       .json({
@@ -41,6 +42,7 @@ const loginStudent = async (req, res) => {
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
         signed: true,
+        sameSite: 'strict',
         expires: new Date(Date.now() + 2592000000), // 30 days
       })
       .status(200)
@@ -57,6 +59,7 @@ const logout = async (_, res) => {
     .clearCookie('auth', {
       secure: process.env.NODE_ENV === 'production',
       httpOnly: true,
+      sameSite: 'strict',
       signed: true,
     })
     .end();
