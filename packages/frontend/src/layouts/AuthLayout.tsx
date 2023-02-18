@@ -33,7 +33,7 @@ const AuthLayout: React.FC<LayoutProps> = ({
       // If error fetching user then cookies have experied
       // Therefore log user out of app
       authCtx?.onLogout();
-      router.replace('/');
+      // router.replace('/');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
