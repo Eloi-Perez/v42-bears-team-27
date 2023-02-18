@@ -71,7 +71,7 @@ const createTeacher = async (req, res) => {
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
         signed: true,
-        sameSite: 'strict',
+        sameSite: 'none',
         expires: new Date(Date.now() + 2592000000), // 30 days
       })
       .json({
