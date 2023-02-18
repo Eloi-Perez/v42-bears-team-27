@@ -1,4 +1,5 @@
 /* eslint-disable array-callback-return */
+const { cookieOptions } = require('../utils');
 const Teacher = require('../models/teacherModel');
 const Student = require('../models/studentModel');
 const Message = require('../models/messageModel');
@@ -67,13 +68,7 @@ const createTeacher = async (req, res) => {
       email: teacher.email,
     };
     return res
-      .cookie('auth', JSON.stringify(payload), {
-        secure: process.env.NODE_ENV === 'production',
-        httpOnly: true,
-        signed: true,
-        sameSite: 'none',
-        expires: new Date(Date.now() + 2592000000), // 30 days
-      })
+      .cookie('auth', JSON.stringify(payload), { cookieOptions })
       .json({
         _id: teacher._id,
         title: teacher.title,
